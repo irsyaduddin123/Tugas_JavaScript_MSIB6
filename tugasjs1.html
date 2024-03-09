@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pegawai</title>
+    <style>
+      .tdbr {
+        border: 2px solid darkgreen;
+        color: brown;
+        /* margin-bottom: 20px; */
+        /* text-align: center; */
+      }
+      .container,
+      #tabelPegawai {
+        display: flex;
+        justify-content: center;
+      }
+      .tbl {
+        width: 50%;
+      }
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        justify-content: center;
+      }
+      th,
+      td {
+        border: 3px solid cornflowerblue;
+        padding: 8px;
+        text-align: left;
+      }
+      h1 {
+        text-align: center;
+      }
+
+      body {
+        background-color: burlywood;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Data pegawai</h1>
+    <div id="tabelPegawai"></div>
+    <br />
+
+    <div class="container">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <td class="tdbr">No.</td>
+            <td class="tdbr">
+              <h3>syarat dan ketentuan :</h3>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tdbr">1.</td>
+            <td class="tdbr">
+              Gaji Pokok(if): Manager=>15 jt, Asisten Manager=>10 jt, Staff=>5
+              jt
+            </td>
+          </tr>
+          <tr>
+            <td class="tdbr">2</td>
+            <td class="tdbr">Tunjangan Jabatan: 15% dari gapok</td>
+          </tr>
+          <tr>
+            <td class="tdbr">3</td>
+            <td class="tdbr">BPJS: 10% dari gapok</td>
+          </tr>
+          <tr>
+            <td class="tdbr">4</td>
+            <td class="tdbr">
+              Tunjangan Keluarga (ternary): dilihat dari status yg sudah menikah
+              =>20% dari gapok
+            </td>
+          </tr>
+          <tr>
+            <td class="tdbr">5.</td>
+            <td class="tdbr">
+              Total Gaji: jumlahlahkan seluruh element gaji (gunakan tfoot)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      // Data pegawai
+      let pegawai = {
+        nama: "Ridwan",
+        jabatan: "Manager",
+        status: "menikah",
+      };
+
+      // Fungsi menghitung gaji
+      function hitungGaji(pegawai) {
+        let gajiPokok;
+
+        switch (pegawai.jabatan) {
+          case "Manager":
+            gajiPokok = 15000000;
+            break;
+          case "Asisten Manager":
+            gajiPokok = 10000000;
+            break;
+          case "Staff":
+            gajiPokok = 5000000;
+            break;
+          default:
+            gajiPokok = 0;
+        }
+
+        let tunjanganJabatan = 0.15 * gajiPokok;
+        let bpjs = 0.1 * gajiPokok;
+        let tunjanganKeluarga =
+          pegawai.status === "menikah" ? 0.2 * gajiPokok : 0;
+        let totalGaji = gajiPokok + tunjanganJabatan + tunjanganKeluarga + bpjs;
+
+        return {
+          gajiPokok,
+          tunjanganJabatan,
+          bpjs,
+          tunjanganKeluarga,
+          totalGaji,
+        };
+      }
+
+      // Memasukkan data gaji ke dalam tabel
+      function masukkanDataTabel(pegawai) {
+        let gaji = hitungGaji(pegawai);
+
+        let tabel = document.createElement("table");
+
+        // Thead
+        let thead = tabel.createTHead();
+        let headerRow = thead.insertRow();
+        let kolom = [
+          "Nama Pegawai",
+          "Jabatan",
+          "Status",
+          "Gaji Pokok",
+          "Tunjangan Jabatan",
+          "BPJS",
+          "Tunjangan Keluarga",
+          "Total Gaji",
+        ];
+        kolom.forEach((kolom) => {
+          let th = document.createElement("th");
+          th.textContent = kolom;
+          headerRow.appendChild(th);
+        });
+
+        // Tbody
+        let tbody = tabel.createTBody();
+        let dataRow = tbody.insertRow();
+        let data = [
+          pegawai.nama,
+          pegawai.jabatan,
+          pegawai.status,
+          gaji.gajiPokok,
+          gaji.tunjanganJabatan,
+          gaji.bpjs,
+          gaji.tunjanganKeluarga,
+          gaji.totalGaji,
+        ];
+        data.forEach((data) => {
+          let td = document.createElement("td");
+          td.textContent = data;
+          dataRow.appendChild(td);
+        });
+
+        // Tfoot
+        let tfoot = tabel.createTFoot();
+        let totalRow = tfoot.insertRow();
+        let totalCell = document.createElement("td");
+        totalCell.colSpan = 7;
+        totalCell.textContent = "Total Gaji";
+        let totalGajiCell = document.createElement("td");
+        totalGajiCell.textContent = gaji.totalGaji;
+        totalRow.appendChild(totalCell);
+        totalRow.appendChild(totalGajiCell);
+
+        return tabel;
+      }
+
+      // Menampilkan tabel di dalam elemen dengan id "tabelPegawai"
+
+      document
+        .querySelector("#tabelPegawai")
+        .appendChild(masukkanDataTabel(pegawai));
+    </script>
+  </body>
+</html>
