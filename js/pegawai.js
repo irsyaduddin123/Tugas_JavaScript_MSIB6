@@ -86,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
         </tfoot>
     </table>`
         });
-
+        // Membersihkan nilai input setelah proses selesai
+        document.getElementById('nama').value = '';
+        document.getElementById('jabatan').value = '';
+        document.getElementById('status').value = '';
     }
 
     // Fungsi untuk memformat angka menjadi format rupiah
@@ -96,5 +99,5 @@ document.addEventListener('DOMContentLoaded', function () {
         ribuan = ribuan.join('.').split('').reverse().join('');
         return 'Rp ' + ribuan;
     }
-    
+
 });
