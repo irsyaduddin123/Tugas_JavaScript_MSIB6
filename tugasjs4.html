@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 4 JS</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        } */
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="pegawai-form">
+        <h3 style="text-align: center; color: #007bff;">Data Pegawai</h3>
+        <label for="nama">Nama Pegawai</label>
+        <input type="text" id="nama" name="nama">
+        <label for="jabatan">Jabatan</label>
+        <select id="jabatan" name="jabatan">
+            <option value="">Pilih Jabatan</option>
+            <option value="Manager">Manager</option>
+            <option value="Asisten Manager">Asisten Manager</option>
+            <option value="Staff">Staff</option>
+        </select>
+        <label for="status">Status</label>
+        <select id="status" name="status">
+            <option value="">Pilih Status</option>
+            <option value="Menikah">Menikah</option>
+            <option value=Bbelum">Belum Menikah</option>
+        </select>
+        <button type="button" id="submit-btn">Submit</button>
+    </form>
+
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
+    <script src="js/pegawai.js"></script>
+</body>
+</html>
