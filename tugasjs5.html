@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenet Handler</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h2>Letakkan kursor ke masing masing kotak untuk melihat gambar</h2>
+    <div id="srgl">
+        Serigala
+        <audio src="sound/wolf-howling-140235.mp3" id="srgsound"></audio>
+    </div>
+    <div id="kcg">
+        Kucing
+        <audio id="catsound" src="sound/cats-meow-81221.mp3"></audio>
+    </div>
+    <div id="aym">
+        Ayam
+        <audio id="aymsound" src="sound/rooster_crowing-7027.mp3"></audio>
+    </div>
+    
+   
+
+    <script>
+        $(document).ready(function(){
+
+            //serigala
+            $("#srgl").mouseover(function(){
+                
+                $(this).css({
+                    background: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3rwiFI-oKVTdSmxW5oCxcNty--VO8MHiZNg&usqp=CAU')",
+                    "background-size": "cover"
+                });
+                document.getElementById("srgsound").play();
+            }).mouseout(function(){
+                $(this).css({
+                    background: "green"
+                });
+                document.getElementById("srgsound").pause();
+                document.getElementById("srgsound").currentTime = 0;
+            });
+
+            //kucing
+            $("#kcg").mouseover(function(){
+                $(this).css({
+                    background: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvEqpnG1rO8JG57wRnXLvp9qMw5bGGSlVS8A&usqp=CAU')",
+                    "background-size": "cover"
+                });
+                document.getElementById("catsound").play();
+            }).mouseout(function(){
+                $(this).css({
+                    background: "green"
+                });
+                document.getElementById("catsound").pause();
+                document.getElementById("catsound").currentTime = 0;
+            });
+
+            //ayam
+            $("#aym").mouseover(function(){
+                $(this).css({
+                    background: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzxb4B4tn0j8azuldhwM9NO0udTpExbyQepA&usqp=CAU')",
+                    "background-size": "cover"
+                });
+                document.getElementById("aymsound").play();
+            }).mouseout(function(){
+                $(this).css({
+                    background: "green"
+                });
+                document.getElementById("aymsound").pause();
+                document.getElementById("aymsound").currentTime = 0;
+            });
+            // $("div").mouseout(function(){
+            //     // var sound = $(this).find(".catsound")[0];
+            //     // sound.pause();
+            //     $(this).css({
+            //         background:"green"
+            //     });
+            // });
+
+        });
+    </script>
+</body>
+</html>
